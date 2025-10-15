@@ -14,6 +14,7 @@ import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
 import { getGenres } from "../../api/tmdb-api";
 
 
+
 const formControl = 
   {
     margin: 1,

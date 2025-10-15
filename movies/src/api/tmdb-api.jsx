@@ -22,6 +22,9 @@ export const getGenres = () => {
     .then(json => json.genres);
 };
 
+
+
+
 export const getMovieImages = (id) => {
   return fetch(
     `https://api.themoviedb.org/3/movie/${id}/images?api_key=${import.meta.env.VITE_TMDB_KEY}`

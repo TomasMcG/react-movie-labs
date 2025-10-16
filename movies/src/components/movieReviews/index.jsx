@@ -9,9 +9,12 @@ import Paper from "@mui/material/Paper";
 import { Link } from "react-router";
 import { getMovieReviews } from "../../api/tmdb-api";
 import { excerpt } from "../../util";
+import { useQuery } from "@tanstack/react-query";
+import Spinner from '../spinner'
+
 
 export default function MovieReviews({ movie }) {
-  const [reviews, setReviews] = useState([]);
+    const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     getMovieReviews(movie.id).then((reviews) => {
@@ -19,6 +22,8 @@ export default function MovieReviews({ movie }) {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+
 
   return (
     <TableContainer component={Paper}>

@@ -14,15 +14,20 @@ import Spinner from '../spinner'
 
 
 export default function MovieReviews({ movie }) {
-    const [reviews, setReviews] = useState([]);
+     const { data, error, isPending, isError } = useQuery({
+    queryKey: ['reviews', { id: movie.id }],
+    queryFn: getMovieReviews,
+  });
+  
+  if (isPending) {
+    return <Spinner />;
+  }
 
-  useEffect(() => {
-    getMovieReviews(movie.id).then((reviews) => {
-      setReviews(reviews);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  if (isError) {
+    return <h1>{error.message}</h1>;
+  }
 
+   const reviews = data.results;
 
 
   return (

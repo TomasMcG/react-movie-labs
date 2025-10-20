@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import Spinner from '../components/spinner';
 import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd'
+import AddToMustWatchIcon from "../components/cardIcons/addToMustWatch";
 
 
 
@@ -35,7 +36,7 @@ const { data, error, isPending, isError  } = useQuery({
       title="Upcoming Movies"
       movies={movies}
      action={(movie) => {
-          return <PlaylistAddIcon color="primary" fontSize="large" />
+          return <AddToMustWatchIcon movie={movie} color="primary" fontSize="large" />
         }}
     />
   );

@@ -15,6 +15,7 @@ import MovieRecommendations from "../movieRecommendations";
 
 
 
+
 const root = {
     display: "flex",
     justifyContent: "center",
@@ -90,7 +91,8 @@ const [recsOpen, setRecsOpen] = useState(false);
         ))} 
       </Paper>
 
-            <Fab
+
+      <Fab
         color="secondary"
         variant="extended"
         onClick={() =>setDrawerOpen(true)}
@@ -127,6 +129,23 @@ const [recsOpen, setRecsOpen] = useState(false);
         onClose={() => setRecsOpen(false)}
       >
         <MovieRecommendations movie={movie} />
+      </Drawer>
+
+       <Fab
+        color="secondary"
+        variant="extended"
+        onClick={() =>setCreditsOpen(true)}
+        sx={{
+          position: 'fixed',
+          bottom: '1em',
+          right: '10em'
+        }}
+      >
+        <CreditsIcon />
+        Credits
+      </Fab>
+      <Drawer anchor="top" open={drawerOpen} onClose={() => setCreditsOpen(false)}>
+        <MovieCredits movie={movie} />
       </Drawer>
 
       </>

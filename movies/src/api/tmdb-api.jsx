@@ -176,7 +176,7 @@ export const getNowPlayingMovies = () => {
    });
   };
 
-    export const getMovieRecommendations = ({ queryKey }) => {
+    export const getMovieCredits = ({ queryKey }) => {
     const [, idPart] = queryKey;
     const { id } = idPart;
     return fetch(

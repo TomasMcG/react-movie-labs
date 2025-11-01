@@ -8,6 +8,8 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router";
 import { getMovieRecommendations } from "../../api/tmdb-api";
+import { useQuery } from "@tanstack/react-query";
+import Spinner from '../spinner'
 import { excerpt } from "../../util";
 
 export default function MovieRecommendations({ movie }) {

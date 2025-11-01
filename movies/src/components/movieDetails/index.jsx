@@ -5,6 +5,7 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import MonetizationIcon from "@mui/icons-material/MonetizationOn";
 import StarRate from "@mui/icons-material/StarRate";
 import NavigationIcon from "@mui/icons-material/Navigation";
+import CreditsIcon from "@mui/icons-material/Navigation";
 import RecommendIcon from "@mui/icons-material/ThumbUp";
 import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
@@ -12,6 +13,7 @@ import React, { useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews";
 import MovieRecommendations from "../movieRecommendations";
+import MovieCredits from "../movieCredits";
 
 
 
@@ -29,6 +31,8 @@ const chip = { margin: 0.5 };
 const MovieDetails = ({ movie }) => {  // Don't miss this!
 const [drawerOpen, setDrawerOpen] = useState(false);
 const [recsOpen, setRecsOpen] = useState(false);
+const [creditsOpen, setCreditsOpen] = useState(false);
+
 
 
   return (
@@ -99,7 +103,7 @@ const [recsOpen, setRecsOpen] = useState(false);
         sx={{
           position: 'fixed',
           bottom: '1em',
-          right: '1em'
+          right: '10em'
         }}
       >
         <NavigationIcon />
@@ -117,7 +121,7 @@ const [recsOpen, setRecsOpen] = useState(false);
         sx={{
           position: "fixed",
           bottom: "1em",
-          right: "12em",
+          right: "20em",
         }}
       >
         <RecommendIcon />
@@ -138,15 +142,17 @@ const [recsOpen, setRecsOpen] = useState(false);
         sx={{
           position: 'fixed',
           bottom: '1em',
-          right: '10em'
+          right: '40em'
         }}
       >
         <CreditsIcon />
         Credits
       </Fab>
-      <Drawer anchor="top" open={drawerOpen} onClose={() => setCreditsOpen(false)}>
+      <Drawer anchor="top" open={creditsOpen} onClose={() => setCreditsOpen(false)}>
         <MovieCredits movie={movie} />
       </Drawer>
+
+
 
       </>
   );

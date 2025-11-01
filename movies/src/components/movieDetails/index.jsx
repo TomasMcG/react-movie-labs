@@ -5,11 +5,13 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import MonetizationIcon from "@mui/icons-material/MonetizationOn";
 import StarRate from "@mui/icons-material/StarRate";
 import NavigationIcon from "@mui/icons-material/Navigation";
+import RecommendIcon from "@mui/icons-material/ThumbUp";
 import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Drawer from "@mui/material/Drawer";
-import MovieReviews from "../movieReviews"
+import MovieReviews from "../movieReviews";
+import MovieRecommendations from "../movieRecommendations";
 
 
 
@@ -25,6 +27,7 @@ const chip = { margin: 0.5 };
 
 const MovieDetails = ({ movie }) => {  // Don't miss this!
 const [drawerOpen, setDrawerOpen] = useState(false);
+const [recsOpen, setRecsOpen] = useState(false);
 
 
   return (
@@ -102,6 +105,28 @@ const [drawerOpen, setDrawerOpen] = useState(false);
       </Fab>
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
         <MovieReviews movie={movie} />
+      </Drawer>
+
+
+       <Fab
+        color="primary"
+        variant="extended"
+        onClick={() => setRecsOpen(true)}
+        sx={{
+          position: "fixed",
+          bottom: "1em",
+          right: "12em",
+        }}
+      >
+        <RecommendIcon />
+        Recommendations
+      </Fab>
+      <Drawer
+        anchor="bottom"
+        open={recsOpen}
+        onClose={() => setRecsOpen(false)}
+      >
+        <MovieRecommendations movie={movie} />
       </Drawer>
 
       </>

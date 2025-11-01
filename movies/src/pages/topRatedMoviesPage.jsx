@@ -1,6 +1,6 @@
 import React from "react";
 import PageTemplate from "../components/templateMovieListPage";
-import { getMovies, getPopularMovies } from "../api/tmdb-api";
+import { getMovies, getTopRatedMovies } from "../api/tmdb-api";
 import { useQuery } from '@tanstack/react-query';
 import Spinner from '../components/spinner';
 import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
@@ -8,11 +8,11 @@ import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd'
 
 
 
-const PopularMoviesPage = (props) => {
+const TopRatedMoviesPage = (props) => {
   
 const { data, error, isPending, isError  } = useQuery({
-    queryKey: ['popular'],
-    queryFn: getPopularMovies,
+    queryKey: ['top_rated'],
+    queryFn: getTopRatedMovies,
   })
   
   if (isPending) {
@@ -32,7 +32,7 @@ const { data, error, isPending, isError  } = useQuery({
 
   return (
     <PageTemplate
-      title="Popular Movies"
+      title="Top Rated Movies"
       movies={movies}
      action={(movie) => {
         return <AddToFavoritesIcon movie={movie} />
@@ -41,4 +41,4 @@ const { data, error, isPending, isError  } = useQuery({
   );
 };
 
-export default PopularMoviesPage;
+export default TopRatedMoviesPage;

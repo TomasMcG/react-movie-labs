@@ -158,7 +158,7 @@ export const getNowPlayingMovies = () => {
 };
 
 
-  export const getRecommendedMovie = ({ queryKey }) => {
+  export const getMovieRecommendations = ({ queryKey }) => {
     const [, idPart] = queryKey;
     const { id } = idPart;
     return fetch(
@@ -175,3 +175,5 @@ export const getNowPlayingMovies = () => {
       throw error
    });
   };
+
+  

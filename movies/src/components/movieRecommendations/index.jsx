@@ -30,31 +30,29 @@ export default function MovieRecommendations({ movie }) {
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{minWidth: 550}} aria-label="Recommendations table">
+      <Table sx={{ minWidth: 550 }} aria-label="Recommendations table">
         <TableHead>
           <TableRow>
-            <TableCell >Author</TableCell>
-            <TableCell align="center">Excerpt</TableCell>
-            <TableCell align="right">More</TableCell>
+            <TableCell>Poster</TableCell>
+            <TableCell>Title</TableCell>
+            <TableCell>Rating</TableCell>
+            <TableCell>More Info</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {recommendations.map((r) => (
             <TableRow key={r.id}>
-              <TableCell component="th" scope="row">
-                {r.author}
+              <TableCell>
+                <img
+                  src={`https://image.tmdb.org/t/p/w200${r.poster_path}`}
+                  alt={r.title}
+                  style={{ borderRadius: "8px", width: "80px" }}
+                />
               </TableCell>
-              <TableCell >{excerpt(r.content)}</TableCell>
-              <TableCell >
-              <Link
-                  to={`/recommendations/${r.id}`}
-                  state={{
-                      recommendation: r,
-                      movie: movie,
-                  }}
-                >
-                  Full Recommendation
-                </Link>
+              <TableCell>{r.title}</TableCell>
+              <TableCell>{r.vote_average}</TableCell>
+              <TableCell>
+                <Link to={`/movies/${r.id}`}>View</Link>
               </TableCell>
             </TableRow>
           ))}

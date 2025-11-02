@@ -9,10 +9,10 @@ import WriteReview from "../components/cardIcons/writeReview";
 
 
 const MoviePlaylistPage = () => {
-  const {favorites: movieIds } = useContext(MoviesContext);
+  const {mustWatch: movieIds } = useContext(MoviesContext);
 
   // Create an array of queries and run in parallel.
-  const favoriteMovieQueries = useQueries({
+  const moviePlaylistQueries = useQueries({
     queries: movieIds.map((movieId) => {
       return {
         queryKey: ['movie', { id: movieId }],
@@ -22,13 +22,13 @@ const MoviePlaylistPage = () => {
   });
   
   // Check if any of the parallel queries is still loading.
-  const isPending = favoriteMovieQueries.find((m) => m.isPending === true);
+  const isPending = moviePlaylistQueries.find((m) => m.isPending === true);
 
   if (isPending) {
     return <Spinner />;
   }
 
-  const movies = favoriteMovieQueries.map((q) => {
+  const movies = moviePlaylistQueries.map((q) => {
     q.data.genre_ids = q.data.genres.map(g => g.id)
     return q.data
   });
@@ -37,7 +37,7 @@ const MoviePlaylistPage = () => {
 
    return (
     <PageTemplate
-      title="Favorite Movies"
+      title="Movie Playlist"
       movies={movies}
       action={(movie) => {
         return (

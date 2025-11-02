@@ -6,6 +6,13 @@ import Typography from "@mui/material/Typography";
 import { getPerson } from "../api/tmdb-api";
 import { getPersonMovieCredits } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import { Link } from "react-router";
 
 const PersonPage = () => {
   const { id } = useParams();
@@ -30,7 +37,7 @@ const PersonPage = () => {
 
   return (
     <>
-      <Typography variant="h4" component="h2" sx={{ marginTop: 5 }}>
+      <Typography variant="h2"  sx={{ marginTop: 5 }}>
         {person.name}
       </Typography>
 
@@ -51,6 +58,47 @@ const PersonPage = () => {
         </Typography>
         
       </Paper>
+
+    <Typography variant="h3" sx={{ marginBottom: 2 }}>
+        Filmography
+      </Typography>
+
+      <TableContainer>
+        <Table sx={{ minWidth: 550 }} aria-label="filmography table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Poster</TableCell>
+              <TableCell>Title</TableCell>
+              <TableCell>Character</TableCell>
+              <TableCell>More Info</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {credits?.cast?.map((movie) => (
+              <TableRow key={movie.credit_id}>
+                <TableCell>
+                  {movie.poster_path ? (
+                    <img
+                      src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                      alt={movie.title}
+                      style={{ borderRadius: "8px", width: "70px" }}
+                    />
+                  ) : (
+                    <span>No Image</span>
+                  )}
+                </TableCell>
+                <TableCell>{movie.title}</TableCell>
+                <TableCell>{movie.character}</TableCell>
+                <TableCell>
+                  <Link to={`/movies/${movie.id}`}>Movie Details</Link>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+ 
+
     </>
   );
 };

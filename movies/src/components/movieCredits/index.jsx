@@ -29,7 +29,7 @@ export default function MovieCredits({ movie }) {
    const cast = data.cast;
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer >
       <Table sx={{ minWidth: 550 }} aria-label="Credits table">
         <TableHead>
           <TableRow>

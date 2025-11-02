@@ -144,14 +144,14 @@ const sortOptions = [
       <CardContent>
 <Slider
   aria-label="Temperature"
-  defaultValue={30}
- 
+  defaultValue={0}
+  value={props.ratingFilter}
+  onChange={handleRatingChange}
   valueLabelDisplay="auto"
-  shiftStep={30}
-  step={10}
+  step={1}
   marks
-  min={10}
-  max={110}
+  min={0}
+  max={10}
 />
 
 </CardContent>

@@ -20,6 +20,7 @@ const MovieHeader = (props) => {
             flexWrap: "wrap",
             padding: 1.5,
             margin: 0,
+            backgroundColor: "#ffda8aff"
         }}
       >
       <IconButton aria-label="go back" onClick={() => navigate(-1)} >
@@ -32,7 +33,7 @@ const MovieHeader = (props) => {
           <HomeIcon color="primary" />
         </a>
         <br />
-        <span sx={{ fontSize: "1.5rem" }}>{`   "${movie.tagline}"`} </span>
+        <span sx={{ fontSize: "1.5rem" }}>{`   ${movie.tagline}`} </span>
       </Typography>
 
       <IconButton aria-label="go forward" onClick={() => navigate(+1) } >

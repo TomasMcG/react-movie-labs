@@ -38,7 +38,7 @@ const [creditsOpen, setCreditsOpen] = useState(false);
   return (
     
     <>
-      <Typography variant="h5" component="h3">
+      <Typography variant="h5" component="h3" sx={{fontWeight: 'bold'}}>
         Overview
       </Typography>
 
@@ -142,7 +142,8 @@ const [creditsOpen, setCreditsOpen] = useState(false);
         sx={{
           position: 'fixed',
           bottom: '1em',
-          right: '40em'
+          right: '40em',
+          backgroundColor: "#0b5e19ff"
         }}
       >
         <CreditsIcon />

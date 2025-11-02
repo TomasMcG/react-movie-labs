@@ -33,8 +33,8 @@ export default function MovieCredits({ movie }) {
     <TableContainer >
       <Table sx={{ minWidth: 550 }} aria-label="Credits table">
         <TableHead>
-          <TableRow>
-            <TableCell>Profile</TableCell>
+          <TableRow variant="h2" sx ={{backgroundColor: "#ffda8aff" , fontWeight: 'bold'}}>
+            <TableCell >Profile</TableCell>
             <TableCell>Name</TableCell>
             <TableCell>Character</TableCell>
           </TableRow>

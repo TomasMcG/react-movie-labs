@@ -11,6 +11,11 @@ import { useNavigate } from "react-router";
 import { styled } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import Drawer from "@mui/material/Drawer";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
 
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
@@ -23,6 +28,9 @@ const SiteHeader = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   
   const navigate = useNavigate();
+
+    const toggleDrawer = (open) => () => {setDrawerOpen(open); };
+    const [drawerOpen, setDrawerOpen] = useState(false);
  
   
 
@@ -44,6 +52,18 @@ const SiteHeader = () => {
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
+    const DrawerList = (
+    <List sx={{ width: 250 }}>
+      {menuOptions.map((option) => (
+        <ListItem key={option.label} disablePadding>
+          <ListItemButton onClick={() => handleMenuSelect(option.path)}>
+            <ListItemText primary={option.label} />
+          </ListItemButton>
+        </ListItem>
+      ))}
+    </List>
+  );
 
   return (
     <>
@@ -109,6 +129,23 @@ const SiteHeader = () => {
                     {opt.label}
                   </Button>
                 ))}
+
+                 <IconButton
+            color="inherit"
+            edge="end"
+            sx={{ ml: 1 }}
+            onClick={toggleDrawer(true)}
+          >
+            <MenuIcon />
+          </IconButton>
+
+          <Drawer
+            anchor="right"
+            open={drawerOpen}
+            onClose={toggleDrawer(false)}
+          >
+            {DrawerList}
+          </Drawer>
               </>
             )}
         </Toolbar>

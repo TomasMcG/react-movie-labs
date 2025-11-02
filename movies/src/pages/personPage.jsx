@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import Paper from "@mui/material/Paper";
@@ -13,6 +13,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { Link } from "react-router";
+import Box from "@mui/material/Box";
+import TablePagination from "@mui/material/TablePagination";
 
 const PersonPage = (props) => {
   const { id } = useParams();
@@ -27,6 +29,17 @@ const PersonPage = (props) => {
   queryFn: getPersonMovieCredits,
 });
 
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0); 
+  };
+
+
   if (isPending) {
     return <Spinner />
   }
@@ -34,6 +47,9 @@ const PersonPage = (props) => {
   if (isError) {
     return <h1>{error.message}</h1>
   }  
+
+  const cast = credits?.cast || [];
+  const paginatedCast = cast.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
   return (
     <>
@@ -59,7 +75,7 @@ const PersonPage = (props) => {
         
       </Paper>
 
-    <Typography variant="h3" sx={{ marginBottom: 2 }}>
+    <Typography variant="h3" sx={{ marginBottom: 2 , backgroundColor: "#ffda8aff"}}>
         Filmography
       </Typography>
 
@@ -74,7 +90,7 @@ const PersonPage = (props) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {credits?.cast?.map((movie) => (
+            {paginatedCast?.map((movie) => (
               <TableRow key={movie.credit_id}>
                 <TableCell>
                   {movie.poster_path ? (
@@ -96,7 +112,20 @@ const PersonPage = (props) => {
             ))}
           </TableBody>
         </Table>
+       <Box sx={{ display: "flex", justifyContent: "flex-start", ml: 2 }}>
+        <TablePagination
+          component="div"
+          count={cast.length}
+          page={page}
+          onPageChange={handleChangePage}
+          rowsPerPage={rowsPerPage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+          rowsPerPageOptions={[5, 10, 25]}
+        />
+        </Box>
       </TableContainer>
+   
+
  
 
     </>

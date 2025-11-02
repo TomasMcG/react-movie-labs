@@ -12,6 +12,7 @@ import { useQuery } from "@tanstack/react-query";
 import Spinner from '../spinner'
 import { excerpt } from "../../util";
 
+
 export default function MovieCredits({ movie }) {
      const { data, error, isPending, isError } = useQuery({
     queryKey: ['Credits', { id: movie.id }],
@@ -32,7 +33,8 @@ export default function MovieCredits({ movie }) {
     <TableContainer >
       <Table sx={{ minWidth: 550 }} aria-label="Credits table">
         <TableHead>
-          <TableRow>
+          <TableRow variant="h2" sx ={{backgroundColor: "#ffda8aff" , fontWeight: 'bold'}}>
+            <TableCell >Profile</TableCell>
             <TableCell>Name</TableCell>
             <TableCell>Character</TableCell>
           </TableRow>
@@ -40,6 +42,17 @@ export default function MovieCredits({ movie }) {
         <TableBody>
           {cast.map((c) => (
             <TableRow key={c.credit_id}>
+               <TableCell>
+                  {c.profile_path ? (
+                    <img
+                      src={`https://image.tmdb.org/t/p/w200${c.profile_path}`}
+                      alt={c.name}
+                      style={{ borderRadius: "8px", width: "70px" }}
+                    />
+                  ) : (
+                    <span>No Image</span>
+                  )}
+                </TableCell>
               <TableCell>
         <Link to={`/person/${c.id}`}>{c.name}</Link>
               </TableCell>

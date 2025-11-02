@@ -32,7 +32,7 @@ export default function MovieRecommendations({ movie }) {
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 550 }} aria-label="Recommendations table">
         <TableHead>
-          <TableRow>
+          <TableRow sx={{backgroundColor: "#ffda8aff"}}>
             <TableCell>Poster</TableCell>
             <TableCell>Title</TableCell>
             <TableCell>Rating</TableCell>

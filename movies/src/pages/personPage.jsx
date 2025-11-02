@@ -75,7 +75,7 @@ const PersonPage = (props) => {
         
       </Paper>
 
-    <Typography variant="h3" sx={{ marginBottom: 2 }}>
+    <Typography variant="h3" sx={{ marginBottom: 2 , backgroundColor: "#ffda8aff"}}>
         Filmography
       </Typography>
 

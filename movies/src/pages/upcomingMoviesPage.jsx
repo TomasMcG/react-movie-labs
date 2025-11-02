@@ -1,4 +1,3 @@
-import React from "react";
 import PageTemplate from "../components/templateMovieListPage";
 import { getMovies, getUpcomingMovies } from "../api/tmdb-api";
 import { useQuery } from '@tanstack/react-query';
@@ -6,6 +5,10 @@ import Spinner from '../components/spinner';
 import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd'
 import AddToMustWatchIcon from "../components/cardIcons/addToMustWatch";
+import React, { useContext  } from "react";
+import { MoviesContext } from "../contexts/moviesContext";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle"; 
+
 
 
 
@@ -15,6 +18,8 @@ const { data, error, isPending, isError  } = useQuery({
     queryKey: ['upcoming'],
     queryFn: getUpcomingMovies,
   })
+
+const {mustWatch } = useContext(MoviesContext)
   
   if (isPending) {
     return <Spinner />
@@ -27,6 +32,9 @@ const { data, error, isPending, isError  } = useQuery({
   const movies = data.results;
 
 
+
+
+
  const favorites = movies.filter(m => m.favorite)
   localStorage.setItem('favorites', JSON.stringify(favorites))
   const addToFavorites = (movieId) => true 
@@ -36,7 +44,11 @@ const { data, error, isPending, isError  } = useQuery({
       title="Upcoming Movies"
       movies={movies}
      action={(movie) => {
-          return <AddToMustWatchIcon movie={movie} color="primary" fontSize="large" />
+          const isInPlaylist = mustWatch.includes(movie.id);
+          if (isInPlaylist)
+            {return <CheckCircleIcon color="success" fontSize="large" />;}
+          else
+            {return <AddToMustWatchIcon movie={movie} color="primary" fontSize="large" />}
         }}
     />
   );

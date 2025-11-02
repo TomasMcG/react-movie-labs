@@ -41,6 +41,12 @@ const addToMustWatch = (movie) => {
     ) )
   };
 
+    const removeFromMustWatch = (movie) => {
+    setMustWatch( mustWatch.filter(
+      (mId) => mId !== movie.id
+    ) )
+  };
+
       const addReview = (movie, review) => {
     setMyReviews( {...myReviews, [movie.id]: review } )
   };
@@ -54,6 +60,7 @@ const addToMustWatch = (movie) => {
         addToMustWatch,
         addToFavorites,
         removeFromFavorites,
+        removeFromMustWatch,
         addReview,
       }}
     >

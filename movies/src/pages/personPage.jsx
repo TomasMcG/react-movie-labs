@@ -14,7 +14,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { Link } from "react-router";
 
-const PersonPage = () => {
+const PersonPage = (props) => {
   const { id } = useParams();
 
   const { data: person, isPending, isError, error } = useQuery({

@@ -12,6 +12,8 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
 import { getGenres } from "../../api/tmdb-api";
+import Slider from '@mui/material/Slider';
+
 import { useQuery } from "@tanstack/react-query";
 
 
@@ -139,6 +141,20 @@ const sortOptions = [
           </Select>
         </FormControl>
       </CardContent>
+      <CardContent>
+<Slider
+  aria-label="Temperature"
+  defaultValue={30}
+ 
+  valueLabelDisplay="auto"
+  shiftStep={30}
+  step={10}
+  marks
+  min={10}
+  max={110}
+/>
+
+</CardContent>
       <CardMedia
         sx={{ height: 100 }}
         image={img}

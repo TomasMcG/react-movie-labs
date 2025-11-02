@@ -35,7 +35,7 @@ export default function MovieCard({ movie, action }) {
 
 
   return (
-    <Card sx={{ backgroundColor: 'white', border: '3px solid #000000ff' }}>
+    <Card sx={{ backgroundColor: 'white', border: '2px solid #000000ff' }}>
             <CardHeader
         avatar={
           movie.favorite ? (

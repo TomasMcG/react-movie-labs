@@ -8,7 +8,7 @@ function MovieListPageTemplate({ movies, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const [ratingFilter, setRatingFilter] = useState("0");
-  const[ratingSort,setRatingSort] = useState("0")
+  const[ratingSort,setRatingSort] = useState("none")
   const genreId = Number(genreFilter);
 
   let displayedMovies = movies

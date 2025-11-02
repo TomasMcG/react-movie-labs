@@ -43,8 +43,8 @@ const ratings = [
 
 const sortOptions = [
   { id: "none", name: "None" },
-  { id: "ratingAscending", name: "Rating Low - High" },
-  { id: "ratingDescending", name: "Rating High - Low" }
+  { id: "ratingAscending", name: "Rating: Low - High" },
+  { id: "ratingDescending", name: "Rating: High - Low" }
 ];
 
 
@@ -152,7 +152,7 @@ const sortOptions = [
     labelId="sort-label"
     id="sort-select"
     defaultValue=""
-    value={props.ratingFilter}
+    value={props.ratingSort}
     onChange={handleSortChange}
   >
 

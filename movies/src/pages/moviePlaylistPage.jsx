@@ -5,6 +5,7 @@ import { useQueries } from "@tanstack/react-query";
 import { getMovie } from "../api/tmdb-api";
 import Spinner from '../components/spinner'
 import RemoveFromFavorites from "../components/cardIcons/removeFromFavorites";
+import RemoveFromMustWatchIcon from "../components/cardIcons/removeFromMustWatch";
 import WriteReview from "../components/cardIcons/writeReview";
 
 
@@ -42,8 +43,8 @@ const MoviePlaylistPage = () => {
       action={(movie) => {
         return (
           <>
-            <RemoveFromFavorites movie={movie} />
-            <WriteReview movie={movie} />
+            <RemoveFromMustWatchIcon movie={movie} />
+            
           </>
         );
       }}

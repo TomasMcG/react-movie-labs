@@ -27,7 +27,19 @@ export default function FilterMoviesCard(props) {
 
   const [genres, setGenres] = useState([{ id: '0', name: "All" }])
 
-
+const ratings = [
+  { id: "0", name: "All" },
+  { id: "1", name: "1+" },
+  { id: "2", name: "2+" },
+  { id: "3", name: "3+" },
+  { id: "4", name: "4+" },
+  { id: "5", name: "5+" },
+  { id: "6", name: "6+" },
+  { id: "7", name: "7+" },
+  { id: "8", name: "8+" },
+  { id: "9", name: "9+" },
+  { id: "10", name: "10" },
+];
 
 
     useEffect(() => {
@@ -49,6 +61,9 @@ export default function FilterMoviesCard(props) {
   const handleGenreChange = e => {
     handleChange(e, "genre", e.target.value)
   };
+   const handleRatingChange = e => {
+    handleChange(e, "rating", e.target.value)
+  };
 
 
   return (
@@ -58,7 +73,7 @@ export default function FilterMoviesCard(props) {
       }} 
       variant="outlined">
       <CardContent>
-        <Typography variant="h5" component="h1">
+        <Typography variant="h5" component="h1" >
           <SearchIcon fontSize="large" />
           Filter the movies.
         </Typography>
@@ -71,16 +86,14 @@ export default function FilterMoviesCard(props) {
       value={props.titleFilter}
       onChange={handleTextChange}
     />
-
-        <FormControl sx={{...formControl}}>
-          <InputLabel id="genre-label">Genre</InputLabel>
+        <InputLabel id="genre-label" sx={{ fontWeight: "bold"}}>Genre</InputLabel>
+        <FormControl sx={{...formControl }} >
             <Select
     labelId="genre-label"
     id="genre-select"
     defaultValue=""
     value={props.genreFilter}
-    onChange={handleGenreChange}
-  >
+    onChange={handleGenreChange}>
 
             {genres.map((genre) => {
               return (
@@ -89,16 +102,40 @@ export default function FilterMoviesCard(props) {
                 </MenuItem>
               );
             })}
+  
+          
+          </Select>
+        </FormControl>
+
+      </CardContent>
+      <CardContent>
+
+        <InputLabel id="rating-label" sx={{ fontWeight: "bold"}}>Minimum Rating</InputLabel>
+        <FormControl sx={{...formControl }} >
+            <Select
+    labelId="rating-label"
+    id="rating-select"
+    defaultValue=""
+    value={props.ratingFilter}
+    onChange={handleRatingChange}
+  >
+
+
+            {ratings.map((rating) => (
+              <MenuItem key={rating.id} value={rating.id}>
+                {rating.name}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
       </CardContent>
       <CardMedia
-        sx={{ height: 300 }}
+        sx={{ height: 100 }}
         image={img}
         title="Filter"
       />
       <CardContent>
-        <Typography variant="h5" component="h1">
+        <Typography variant="h5" component="h1"  >
           <SearchIcon fontSize="large" />
           Filter the movies.
           <br />

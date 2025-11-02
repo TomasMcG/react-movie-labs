@@ -29,7 +29,7 @@ export default function MovieCredits({ movie }) {
    const cast = data.cast;
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer >
       <Table sx={{ minWidth: 550 }} aria-label="Credits table">
         <TableHead>
           <TableRow>
@@ -40,7 +40,9 @@ export default function MovieCredits({ movie }) {
         <TableBody>
           {cast.map((c) => (
             <TableRow key={c.credit_id}>
-              <TableCell>{c.name}</TableCell>
+              <TableCell>
+        <Link to={`/person/${c.id}`}>{c.name}</Link>
+              </TableCell>
               <TableCell>{c.character}</TableCell>
             </TableRow>
           ))}

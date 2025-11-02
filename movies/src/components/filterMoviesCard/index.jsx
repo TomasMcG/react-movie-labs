@@ -79,13 +79,13 @@ const sortOptions = [
   return (
     <Card 
       sx={{
-        backgroundColor: "rgb(204, 204, 0)"
+        backgroundColor: "#ffda8aff"
       }} 
       variant="outlined">
       <CardContent>
-        <Typography variant="h5" component="h1" >
+        <Typography variant="h5" component="h1"  sx={{ fontWeight: 'bold' , textDecoration: 'underline'}} >
           <SearchIcon fontSize="large" />
-          Filter the movies.
+          Filter movies
         </Typography>
             <TextField
       sx={{...formControl}}

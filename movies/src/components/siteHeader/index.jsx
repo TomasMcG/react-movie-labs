@@ -12,6 +12,7 @@ import { styled } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
+
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
 const SiteHeader = () => {
@@ -22,6 +23,8 @@ const SiteHeader = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   
   const navigate = useNavigate();
+ 
+  
 
   const menuOptions = [
     { label: "Home", path: "/" },
@@ -44,13 +47,13 @@ const SiteHeader = () => {
 
   return (
     <>
-      <AppBar position="fixed" color="secondary">
+      <AppBar position="fixed" sx={{ backgroundColor: "#0b5e19ff"}}>
         <Toolbar>
           <Typography variant="h4" sx={{ flexGrow: 1 }}>
             TMDB Client
           </Typography>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            All you ever wanted to know about Movies!
+            Discover new and upcoming movies!
           </Typography>
             {isMobile ? (
               <>
@@ -63,7 +66,7 @@ const SiteHeader = () => {
                 >
                   <MenuIcon />
                 </IconButton>
-                <Menu
+                <Menu 
                   id="menu-appbar"
                   anchorEl={anchorEl}
                   anchorOrigin={{
@@ -77,11 +80,13 @@ const SiteHeader = () => {
                   }}
                   open={open}
                   onClose={() => setAnchorEl(null)}
+                  
                 >
                   {menuOptions.map((opt) => (
-                    <MenuItem
+                    <MenuItem 
                       key={opt.label}
                       onClick={() => handleMenuSelect(opt.path)}
+                      
                     >
                       {opt.label}
                     </MenuItem>
@@ -90,10 +95,15 @@ const SiteHeader = () => {
               </>
             ) : (
               <>
-                {menuOptions.map((opt) => (
+                {menuOptions.map((opt) => 
+                  (
+                 
+                  
                   <Button
+                  
                     key={opt.label}
-                    color="inherit"
+                    color= "transparent"
+                    sx={{color: "#ffda8aff",  }}
                     onClick={() => handleMenuSelect(opt.path)}
                   >
                     {opt.label}

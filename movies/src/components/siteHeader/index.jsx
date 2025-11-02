@@ -12,6 +12,7 @@ import { styled } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
+
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
 const SiteHeader = () => {
@@ -22,6 +23,8 @@ const SiteHeader = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   
   const navigate = useNavigate();
+ 
+  
 
   const menuOptions = [
     { label: "Home", path: "/" },
@@ -92,11 +95,15 @@ const SiteHeader = () => {
               </>
             ) : (
               <>
-                {menuOptions.map((opt) => (
+                {menuOptions.map((opt) => 
+                  (
+                 
+                  
                   <Button
+                  
                     key={opt.label}
                     color= "transparent"
-                    sx={{color: "#ffda8aff"}}
+                    sx={{color: "#ffda8aff",  }}
                     onClick={() => handleMenuSelect(opt.path)}
                   >
                     {opt.label}

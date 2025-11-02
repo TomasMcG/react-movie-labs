@@ -153,7 +153,7 @@ const sortOptions = [
     id="sort-select"
     defaultValue=""
     value={props.ratingFilter}
-    onChange={handleRatingChange}
+    onChange={handleSortChange}
   >
 
 

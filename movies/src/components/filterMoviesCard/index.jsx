@@ -13,6 +13,10 @@ import Select from "@mui/material/Select";
 import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
 import { getGenres } from "../../api/tmdb-api";
 import Slider from '@mui/material/Slider';
+import RadioGroup, { useRadioGroup } from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Radio from '@mui/material/Radio';
+
 
 import { useQuery } from "@tanstack/react-query";
 
@@ -178,10 +182,23 @@ const sortOptions = [
               </MenuItem>
             ))}
           </Select>
+
+
+            <RadioGroup
+    aria-labelledby="sort-ratings"
+    name="sort-ratings"
+    value={props.ratingSort}
+    onChange={handleSortChange}
+  >
+    <FormControlLabel value="none" control={<Radio />} label="None" />
+    <FormControlLabel value="ratingAscending" control={<Radio />} label="Ascending" />
+    <FormControlLabel value="ratingDescending" control={<Radio />} label="Descending" />
+  </RadioGroup>
         </FormControl>
   
         
       </CardContent>
+  
     </Card>
   );
 }

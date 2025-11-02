@@ -90,9 +90,32 @@ export default function FilterMoviesCard(props) {
             })}
           </Select>
         </FormControl>
+
+      </CardContent>
+      <CardContent>
+
+        <InputLabel id="rating-label" sx={{ fontWeight: "bold"}}>Minimum Rating</InputLabel>
+        <FormControl sx={{...formControl }} >
+            <Select
+    labelId="rating-label"
+    id="rating-select"
+    defaultValue=""
+    value={props.genreFilter}
+    onChange={handleGenreChange}
+  >
+
+            {genres.map((genre) => {
+              return (
+                <MenuItem key={genre.id} value={genre.id}>
+                  {genre.name}
+                </MenuItem>
+              );
+            })}
+          </Select>
+        </FormControl>
       </CardContent>
       <CardMedia
-        sx={{ height: 300 }}
+        sx={{ height: 100 }}
         image={img}
         title="Filter"
       />

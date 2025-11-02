@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { getPerson } from "../api/tmdb-api";
+import { getPersonMovieCredits } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
 
 const PersonPage = () => {
@@ -13,6 +14,11 @@ const PersonPage = () => {
     queryKey: ["person", { id }],
     queryFn: getPerson,
   });
+
+  const { data: credits } = useQuery({
+  queryKey: ["personCredits", { id }],
+  queryFn: getPersonMovieCredits,
+});
 
   if (isPending) {
     return <Spinner />
@@ -43,6 +49,7 @@ const PersonPage = () => {
         <Typography >
           Born: {person.birthday } 
         </Typography>
+        
       </Paper>
     </>
   );

@@ -41,6 +41,12 @@ const ratings = [
   { id: "10", name: "10" },
 ];
 
+const sortOptions = [
+  { id: "none", name: "None" },
+  { id: "ratingAscending", name: "Rating Low - High" },
+  { id: "ratingDescending", name: "Rating High - Low" }
+];
+
 
     useEffect(() => {
     getGenres().then((allGenres) => {
@@ -63,6 +69,10 @@ const ratings = [
   };
    const handleRatingChange = e => {
     handleChange(e, "rating", e.target.value)
+  };
+
+     const handleSortChange = e => {
+    handleChange(e, "sort", e.target.value)
   };
 
 
@@ -135,11 +145,27 @@ const ratings = [
         title="Filter"
       />
       <CardContent>
-        <Typography variant="h5" component="h1"  >
-          <SearchIcon fontSize="large" />
-          Filter the movies.
-          <br />
-        </Typography>
+        
+        <InputLabel id="sort-label" sx={{ fontWeight: "bold"}}>Rating Sort</InputLabel>
+        <FormControl sx={{...formControl }} >
+            <Select
+    labelId="sort-label"
+    id="sort-select"
+    defaultValue=""
+    value={props.ratingFilter}
+    onChange={handleRatingChange}
+  >
+
+
+            {sortOptions.map((sort) => (
+              <MenuItem key={sort.id} value={sort.id}>
+                {sort.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+  
+        
       </CardContent>
     </Card>
   );

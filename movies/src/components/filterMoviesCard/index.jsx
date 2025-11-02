@@ -139,11 +139,10 @@ const sortOptions = [
               </MenuItem>
             ))}
           </Select>
+   
         </FormControl>
-      </CardContent>
-      <CardContent>
-<Slider
-  aria-label="Temperature"
+               <Slider
+  aria-label="Rating Filter"
   defaultValue={0}
   value={props.ratingFilter}
   onChange={handleRatingChange}
@@ -153,8 +152,8 @@ const sortOptions = [
   min={0}
   max={10}
 />
-
-</CardContent>
+      </CardContent>
+     
       <CardMedia
         sx={{ height: 100 }}
         image={img}
